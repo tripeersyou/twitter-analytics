@@ -40,3 +40,8 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+# Twitter API
+twitter_config.js
+twitter.config.js
+res

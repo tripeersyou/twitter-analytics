@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="card">
+    <img src="{{user.profile_banner_url}}" class="card-img-top">
+    <div class="card-body">
+      <h4 class="card-title">
+        <img src="{{user.profile_image_url_https}}"> {{user.name}} <small class="text-muted">@{{user.screen_name}}</small>
+      </h4>
+      <div class="card-body">
+        <p class="card-text"><small class="text-muted">{{user.location}}</small></p>
+        <p class="card-text">{{user.description}}</p>
+        <div class="row">
+          <div class="col-md-4">
+            <a routerLink="/users/{{user.screen_name}}/followers">Followers:</a>
+            <br>
+            <h5>{{user.followers_count}}</h5>
+          </div>
+          <div class="col-md-4">
+            <a href="users/{{user.screen_name}}/following">Following:</a>
+            <br>
+            <h5>{{user.friends_count}}</h5>
+          </div>
+          <div class="col-md-4">
+            <a href="#">Favorites:</a>
+            <br>
+            <h5>{{user.favourites_count}}</h5>
+          </div>
+        </div>
+        <hr>
+        <h4>Last Tweet:</h4>
+        <p class="card-text">
+          {{user.status.text}}
+        </p>
+        <p class="card-text">
+          <small class="text-muted">
+            Created at: 
+            <a href="http://twitter.com/{{user.screen_name}}/status/{{user.status.id_str}}">{{user.status.created_at}}</a>
+          </small>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
