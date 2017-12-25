@@ -1,5 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { TwitterApiService } from '../twitter-api.service';
+import {
+  Component,
+  OnInit
+} from '@angular/core';
+import {
+  TwitterApiService
+} from '../twitter-api.service';
 
 @Component({
   selector: 'app-search-tweets',
@@ -12,13 +17,12 @@ export class SearchTweetsComponent implements OnInit {
   tweets;
   count: number = 15;
 
-  constructor(private twitterApiService: TwitterApiService) { }
+  constructor(private twitterApiService: TwitterApiService) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
-  searchTweets(){
-    this.twitterApiService.searchTweets(this.query, this.count).subscribe( res => {
+  searchTweets() {
+    this.twitterApiService.searchTweets(this.query, this.count).subscribe(res => {
       this.tweets = res;
     });
   }
