@@ -23,7 +23,7 @@ router.get('/tweets', (request, response) => {
 router.get('/followers/:handle', (request, response) => {
   TwitAPI.get('followers/list', {
     screen_name: request.params.handle,
-    count: request.query.count
+    count: request.query.count    
   }, (error, data) => {
     if (error) {
       response.status(500).json(error)
@@ -38,6 +38,12 @@ router.get('/user/:handle', (request, response) => {
   TwitAPI.get('users/show', {
     screen_name: request.params.handle
   }, (error, data) => {
+    response.status(200).json(data);
+  });
+});
+
+router.get('/user/tweets/:handle', (request, response)=>{
+  TwitAPI.get('statuses/user_timeline',{screen_name: request.params.handle, count: 200}, (error,data) =>{
     response.status(200).json(data);
   });
 });
@@ -70,5 +76,19 @@ router.get('/statuses/:handle', (request, response) => {
     }
   });
 });
+
+// Post a tweet
+router.post('/tweet/', (request, response) => {
+    TwitAPI.post('statuses/update', {
+      status: request.params.status
+    }, (error, data) => {
+      if (error) {
+        response.status(500).json(error);
+      } else {
+        response.status(200).json(data);
+        1
+      }
+    });
+  });
 
 module.exports = router;

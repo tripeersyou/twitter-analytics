@@ -33,5 +33,8 @@ export class TwitterApiService {
     return this._http.get(`api/following/${handle}?count=${count}`).map(response => this.data = response.json());
   }
 
+  getUserTweets(handle: string) {
+    return this._http.get(`api/user/tweets/${handle}`).map(response => this.data = response.json());
+  }
 
 }

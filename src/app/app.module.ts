@@ -10,6 +10,7 @@ import { GetFollowersComponent } from './get-followers/get-followers.component';
 import { UserComponent } from './user/user.component';
 import { GetFollowingComponent } from './get-following/get-following.component';
 import { UserSearchComponent } from './user-search/user-search.component';
+import { UserTweetsComponent } from './user-tweets/user-tweets.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { UserSearchComponent } from './user-search/user-search.component';
     GetFollowersComponent,
     UserComponent,
     GetFollowingComponent,
-    UserSearchComponent
+    UserSearchComponent,
+    UserTweetsComponent
   ],
   imports: [
     BrowserModule,

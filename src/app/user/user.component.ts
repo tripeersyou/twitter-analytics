@@ -18,6 +18,7 @@ export class UserComponent implements OnInit {
 
   handle;
   user;
+  tweets;
 
   constructor(private route: ActivatedRoute, private twitterApiService: TwitterApiService) {
     this.route.params.subscribe(res => {

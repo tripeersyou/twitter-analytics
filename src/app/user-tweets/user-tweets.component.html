@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4" *ngFor="let tweet of tweets">
+      <div class="card">
+        <img src="{{tweet.user.profile_banner_url}}" alt="card-img" class="card-img-top" *ngIf="tweet.user.profile_banner_url != null; else sub">
+        <ng-template #sub>
+          <img src="http://cdn.wonderfulengineering.com/wp-content/uploads/2014/05/twitter-header-photo-610x203.png" alt="default-card"
+            class="card-img-top">
+        </ng-template>
+        <!--sub-->
+        <div class="card-body">
+          <h4 class="card-title">
+            <a href="https://twitter.com/{{tweet.user.screen_name}}">
+              <img src="{{tweet.user.profile_image_url_https}}" alt="{{tweet.user.name}}'s twitter icon'"> {{tweet.user.name}}
+            </a>
+          </h4>
+          <p class="card-text">{{tweet.text}}</p>
+          <p class="card-text" *ngIf="tweet.text.slice(0,2) !='RT'; else retweet">
+            <small class="text-muted">
+              Created at
+              <a href="https://twitter.com/{{tweet.user.screen_name}}/status/{{tweet.id_str}}" target="_blank">{{tweet.created_at}}</a>
+            </small>
+          </p>
+          <ng-template #retweet>
+            <p class="card-text">
+              <small class="text-muted">
+                Created at
+                <a href="http://twitter.com/{{tweet.entities.user_mentions[0].screen_name}}/status/{{tweet.retweeted_status.id_str}}" target="_blank">{{tweet.created_at}}</a>
+              </small>
+            </p>
+          </ng-template>
+        </div>
+        <!--card-body-->
+      </div>
+      <!--card-->
+    </div>
+  </div>
+</div>
